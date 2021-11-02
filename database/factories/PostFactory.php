@@ -25,7 +25,7 @@ class PersonneFactory extends Factory
             'name' => $this->faker->text,
             'email' => $this->faker->text,
             'password' => $this->faker->text,
-            ];
+            ]; 
     }
 }
 
