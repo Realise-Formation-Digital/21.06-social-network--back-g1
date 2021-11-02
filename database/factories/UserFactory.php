@@ -33,6 +33,8 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'email_verified_at' => null,
+
+                'name'=>$this->faker->person,
             ];
         });
     }
