@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Like;
+use App\Models\Post;
 use App\Models\User;
 
 
-class ConsultationController extends Controller
+class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.

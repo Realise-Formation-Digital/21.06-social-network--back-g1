@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Post;
+use App\Models\Commentaire;
+use App\Models\Like;
 
 
-class ConsultationController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +19,7 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        //
+        return User:: all();
     }
 
     /**

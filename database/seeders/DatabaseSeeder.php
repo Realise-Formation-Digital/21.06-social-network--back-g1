@@ -17,30 +17,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Je crée 15 users et 12 posts
-        $user = User::factory()->count(15)->create();
-        $post = Post::factory()->count(12)->create();
+        // Je crée 60 users 
+        $users = User::factory()->count(60)->create();
 
-        // Je crée 10 commentaires et attache aléatoirement un commentaire à chaque personne
-        $commentaire = Commentaire::factory()->count(10)->make()
-        ->each(function($commentaire) use ($User) {
-        $commentaire->user_id = $users->random()->id; 
-        $commentaire->save();
+        // Je crée 50 posts et attache aléatoirement un post à chaque personne
+        $posts = Post::factory()->count(50)->make()
+            ->each(function($post) use ($users) {
+                $post->user_id = $users->random()->id;
+                $post->save();
+            });
+
+                    
+
+        // Je crée 50 commentaires et attache aléatoirement un commentaire à chaque personne
+        $commentaires = Commentaire::factory()->count(50)->make()
+            ->each(function($commentaire) use ($users,$posts) {
+            $commentaire->user_id = $users->random()->id; 
+            $commentaire->post_id = $posts->random()->id; 
+            $commentaire->save();
         });
 
-        // Je crée 10 posts et attache aléatoirement un post à chaque personne
-        $posts = Post::factory()->count(5)->make()
-        ->each(function($post) use ($users, $commentaires, $likes ) {
-        $post->user_id = $users->random()->id;
-        $post->commentaire_id = $commentaires->random()->id;
-        $post->like_id = $likes->random()->id;
-        $post->save();
-        });
-        // Je crée 10 consultation et attache aléatoirement une consultation à chaque personne
-        $documents = Document::factory()->count(10)->make()
-        ->each(function($document) use ($consultations) {
-        $document->consultation_id = $consultations->random()->id;
-        $document->save();
-        });
+
+        // Je crée 40 consultation et attache aléatoirement une consultation à chaque personne
+        $likes = Like::factory()->count(40)->make()
+            ->each(function($like) use ($users,$posts) {
+                $like->user_id = $users->random()->id;
+                $like->post_id = $posts->random()->id;
+                $like->save();
+            });
     }
 }
