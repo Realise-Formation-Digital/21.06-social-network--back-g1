@@ -24,8 +24,8 @@ use App\Http\Controllers\Api\LikeController;
 
 });
     Route::resource('users', UserController::class);
-    Route::resource('posts', PostController::class);
+    /*Route::resource('posts', PostController::class);
     Route::resource('commentaires', CommentaireController::class);
     Route::resource('likes', LikeController::class);
-
+*/
 
