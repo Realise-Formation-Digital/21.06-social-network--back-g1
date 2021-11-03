@@ -14,7 +14,7 @@ class LikeFactory extends Factory
     public function definition()
     {
         return [
-            'date' => $this->faker->date,
+            'date' => $this->faker->date(),
 
         ];
     }

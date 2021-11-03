@@ -8,11 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Like extends Model
 {
     use HasFactory;
-    protected $fillable = ['date',];
-    protected $hidden = ['created_at', 'updated_at'];
-    public function Like()
+    protected $fillable = ['date'];
+
+
+    public function user()
+    {
+    return $this->belongsTo(User::class);
+    
+}
+
+public function post()
     {
     return $this->belongsTo(Post::class);
-    return $this->belongsTo(User::class);
+    
 }
+
 }
