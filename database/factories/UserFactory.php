@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Post;
 
 
+
 class UserFactory extends Factory
 {
     /**

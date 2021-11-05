@@ -18,12 +18,20 @@ use App\Http\Controllers\Api\LikeController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+/*
  Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 
+
 });
+*/
     Route::resource('users', UserController::class);
+    Route::resource('posts', PostController::class);
+    Route::resource('likes', LikeController::class);
+    Route::resource('commentaires', CommentaireController::class);
+
+
+
     /*Route::resource('posts', PostController::class);
     Route::resource('commentaires', CommentaireController::class);
     Route::resource('likes', LikeController::class);
