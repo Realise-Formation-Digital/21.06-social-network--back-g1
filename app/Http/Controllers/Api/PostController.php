@@ -28,8 +28,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'description' => 'required|unique:posts|max:255',
+            'ville' => 'required',
+            'image' => 'required',
+            'date' => 'required',
+        ]);
     }
+
+    public function create()
+    {
+        return view('post.create');
+    }
+
+    
 
     /**
      * Display the specified resource.
