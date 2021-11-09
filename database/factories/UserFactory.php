@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->word,
             'email' => $this->faker->email,
-            'password' => substr($this->faker->word,0,8) 
+            'password' => bcrypt('test1234')  
         ]; 
     }
 }
