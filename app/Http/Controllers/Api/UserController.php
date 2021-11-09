@@ -36,7 +36,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+                //  Allow for user update *or* create a new user
+                $user = new User;
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->password = $request->password;
+                $user->save();
+                
+                if ($user->save()) {
+                    return new UserResource($user);
+                }
     }
 
     /**
@@ -64,17 +73,31 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        try {
+            $user = User::find($id);
+            $user->name = $request->name ? $request->name : $user->name;
+            /*
+            if ($request->name) {
+                $user->name = $request->name;
+            } else {
+                $user->name = $user->name;
+            }
+            */
+            $user->email = $request->email ? $request->email : $user->email;
+            $user->password = $request->password ? $request->password : $user->password;
+            $user->save();
+            return response()->json([
+                'status_code' => 200,
+                'message' => "L'utilisateur a été modifié",
+                'data' => $user
+            ]);
+            // $user->update($request->all());
+        }
+        catch(Exception $e) {
+            return response()->json([
+                'status_code' => 400,
+                'message' => "Il y a eu une erreur lors de la modification de l'utilisateur"
+            ]);
+        }
     }
 }
