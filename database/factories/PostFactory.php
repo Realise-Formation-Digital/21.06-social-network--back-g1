@@ -3,13 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Post;
 
-
-
-class UserFactory extends Factory
+class PostFactory extends Factory
 {
+ 
+
     /**
      * Define the model's default state.
      *
@@ -18,9 +17,11 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word,
-            'email' => $this->faker->email,
-            'password' => bcrypt('test1234')  
-        ]; 
+            'ville' => $this->faker->word,
+            'description' => $this->faker->text,
+            'image' => $this->faker->imageUrl(),
+            'date' => $this->faker->date(),
+            ]; 
     }
 }
+
