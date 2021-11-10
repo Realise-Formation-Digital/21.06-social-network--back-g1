@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -42,7 +43,7 @@ class AuthenticationController extends Controller
     public function signin(Request $request)
     {
         $attr = $request->validate([
-            'email' => 'required|string|email|',
+            'email' => 'required|string|email',
             'password' => 'required|string|min:6'
         ]);
 

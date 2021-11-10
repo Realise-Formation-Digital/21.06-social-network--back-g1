@@ -28,10 +28,10 @@ use App\Http\Controllers\Api\AuthenticationController;
 */
 
 
-
+/*
 Route::get('/post/create', [PostController::class, 'create']);
 Route::post('/post', [PostController::class, 'store']);
-
+*/
 
 
 
