@@ -100,4 +100,16 @@ class UserController extends Controller
             ]);
         }
     }
+    public function destroy($id)
+    {
+         // Get the user
+        $user = User::findOrFail($id);
+
+        //  Delete the user, return as confirmation
+        if ($user->delete()) {
+            return new UserResource($user);
+        }
+
+
+    }
 }
