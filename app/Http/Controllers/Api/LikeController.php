@@ -39,8 +39,6 @@ class LikeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    */
-   public function update(Request $request, $id)
     {
         
     }
